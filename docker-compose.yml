@@ -1,0 +1,29 @@
+version: '3.3'
+
+networks:
+  php-cli:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.31.31.0/28
+
+services:
+  php-cli:
+    env_file:
+      - ./.env.example
+    restart: unless-stopped
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - ./sockets:/usr/local/var/run:rw
+      - ./cron/crontab.example:/etc/periodic/crontab:rw
+      - ./test:/usr/data/app
+    environment:
+      PHP_CLI_USER_ID: "${USER_ID:-1000}"
+      PHP_CLI_GROUP_ID: "${GROUP_ID:-1000}"
+    networks:
+      - php-cli

@@ -1,0 +1,7 @@
+/.idea/*
+/sockets/*
+/test/vendor/*
+/test/composer.lock
+/test/.phpunit.result.cache
+
+!/**/.gitkeep

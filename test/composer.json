@@ -1,0 +1,26 @@
+{
+    "name": "vtikunov/php8-cli",
+    "license": "proprietary",
+    "type": "project",
+    "require": {
+        "php": "8.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.0",
+        "sempro/phpunit-pretty-print": "1.3.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "@php ./vendor/bin/phpunit"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true
+}
